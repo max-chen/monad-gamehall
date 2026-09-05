@@ -1,0 +1,133 @@
+{
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "player",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "balance",
+          "type": "uint256"
+        }
+      ],
+      "name": "Bought",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "player",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "Cashed",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "player",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "balance",
+          "type": "uint256"
+        }
+      ],
+      "name": "Forfeited",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "HOUSE",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "buy",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "cashOut",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "forfeit",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "marbles",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x6080604052348015600e575f5ffd5b506104fb8061001c5f395ff3fe608060405260043610610049575f3560e01c80633ed546ab1461004d578063475971621461006e578063793cd71e146100b2578063a6f2ae3a146100c6578063aa6dcc2b146100ce575b5f5ffd5b348015610058575f5ffd5b5061006c610067366004610441565b610107565b005b348015610079575f5ffd5b5061009573f2f68b3c960ee48a63ca49264564e076d5d63a7081565b6040516001600160a01b0390911681526020015b60405180910390f35b3480156100bd575f5ffd5b5061006c61028d565b61006c61039f565b3480156100d9575f5ffd5b506100f96100e8366004610458565b5f6020819052908152604090205481565b6040519081526020016100a9565b5f81116101475760405162461bcd60e51b81526020600482015260096024820152681b9bc8185b5bdd5b9d60ba1b60448201526064015b60405180910390fd5b335f90815260208190526040902054818110156101935760405162461bcd60e51b815260206004820152600a6024820152690dcdee840cadcdeeaced60b31b604482015260640161013e565b61019d8282610499565b335f9081526020819052604080822092909255905173f2f68b3c960ee48a63ca49264564e076d5d63a709084908381818185875af1925050503d805f8114610200576040519150601f19603f3d011682016040523d82523d5f602084013e610205565b606091505b50509050806102435760405162461bcd60e51b815260206004820152600a6024820152691a1bdd5cd94819985a5b60b21b604482015260640161013e565b335f8181526020818152604091829020548251878152918201527f119c0ade090bb714a96e0042ce0a9c9fd4c8649c12bad6db6851be0debc8d1f8910160405180910390a2505050565b335f90815260208190526040902054806102d65760405162461bcd60e51b815260206004820152600a6024820152696e6f206d6172626c657360b01b604482015260640161013e565b335f818152602081905260408082208290555190919083908381818185875af1925050503d805f8114610324576040519150601f19603f3d011682016040523d82523d5f602084013e610329565b606091505b50509050806103665760405162461bcd60e51b81526020600482015260096024820152681cd95b990819985a5b60ba1b604482015260640161013e565b60405182815233907f42c84a236343ada971389cc6b0591e678269447b5bf787459b3c81485e0fba0c9060200160405180910390a25050565b5f34116103d75760405162461bcd60e51b815260206004820152600660248201526537379026a7a760d11b604482015260640161013e565b335f90815260208190526040812080543492906103f59084906104b2565b9091555050335f8181526020818152604091829020548251348152918201527fa9a40dec7a304e5915d11358b968c1e8d365992abf20f82285d1df1b30c8e24c910160405180910390a2565b5f60208284031215610451575f5ffd5b5035919050565b5f60208284031215610468575f5ffd5b81356001600160a01b038116811461047e575f5ffd5b9392505050565b634e487b7160e01b5f52601160045260245ffd5b818103818111156104ac576104ac610485565b92915050565b808201808211156104ac576104ac61048556fea2646970667358221220e8b4a1df0544da45a08a05d447f9b112609867e32d05ae133494607db544bd8964736f6c63430008240033"
+}

@@ -1,4 +1,7 @@
-export const START_CHIPS = 2;
+export const START_CHIPS = 0;
+export const HOUSE_MARBLES = 10000;
+export const GIFT_MARBLES = 10;
+export const PACK_MON = 1;
 export const MIN_BET = 0.01;
 export const MAX_BET = 0.5;
 export const WIN_MULT = 1.96;
@@ -34,8 +37,17 @@ function roll(mod: number): number {
   return n % mod;
 }
 
+export function roundAmt(n: number): number {
+  if (!Number.isFinite(n)) return 0;
+  return Math.round(n * 100) / 100;
+}
+
+export function formatAmt(n: number): string {
+  return roundAmt(n).toFixed(2);
+}
+
 export function winPayout(bet: number): number {
-  return Math.round(bet * WIN_MULT * 1e6) / 1e6;
+  return roundAmt(bet * WIN_MULT);
 }
 
 export function clampBet(bet: number, chips: number): number {

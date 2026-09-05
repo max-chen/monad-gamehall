@@ -1,6 +1,9 @@
 export const GAME_HALL_ADDRESS = "0xF2f68B3C960ee48A63cA49264564e076d5d63a70";
 export const EXPLORER = `https://testnet.monadscan.com/address/${GAME_HALL_ADDRESS}`;
+export const FAUCET = "https://faucet.monad.xyz";
 export const RPC = "https://testnet-rpc.monad.xyz";
+export const CHAIN_ID = 10143;
+export const CHAIN_ID_HEX = "0x279f";
 
 export async function fetchHouseBalance(): Promise<number | null> {
   try {
@@ -17,7 +20,7 @@ export async function fetchHouseBalance(): Promise<number | null> {
     if (!res.ok) return null;
     const json = (await res.json()) as { result?: string };
     if (!json.result) return null;
-    return Number(BigInt(json.result)) / 1e18;
+    return Math.round((Number(BigInt(json.result)) / 1e18) * 100) / 100;
   } catch {
     return null;
   }

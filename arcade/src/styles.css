@@ -129,6 +129,37 @@
   rotate: -6deg;
 }
 
+.purse-tag {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 1.75rem;
+  align-items: center;
+  padding: 0.1rem 0.55rem;
+  border: 2px solid var(--color-fg);
+  border-radius: 0.35rem;
+  background: var(--color-bg);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+}
+
+.purse-tag-house {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-ink);
+}
+
+.purse-you {
+  border-style: dashed;
+}
+
+.purse-house {
+  border-width: 3px;
+  box-shadow:
+    5px 7px 0 color-mix(in oklab, var(--color-fg) 18%, transparent),
+    0 1px 0 var(--color-surface);
+}
+
 .coin-scene {
   perspective: 900px;
   height: 9.25rem;
@@ -237,11 +268,11 @@
 .coin-plate-tails,
 .coin-thumb-tails .coin-plate {
   background:
-    radial-gradient(circle at 32% 26%, color-mix(in oklab, var(--color-ink) 40%, transparent), transparent 42%),
+    radial-gradient(circle at 32% 26%, color-mix(in oklab, var(--color-ink) 52%, transparent), transparent 42%),
     radial-gradient(
       circle at 50% 54%,
-      color-mix(in oklab, var(--color-coin) 55%, var(--color-surface)),
-      color-mix(in oklab, var(--color-coin) 70%, var(--color-fg)) 70%,
+      color-mix(in oklab, var(--color-coin) 72%, var(--color-ink)),
+      var(--color-coin) 55%,
       var(--color-coin-deep)
     );
 }

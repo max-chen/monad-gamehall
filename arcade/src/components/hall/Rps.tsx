@@ -8,6 +8,7 @@ import {
   type Round,
   type RpsMove,
   clampBet,
+  formatAmt,
   outcomeCopy,
 } from "@/lib/hall/rules";
 import { BetRow } from "./CoinFlip";
@@ -142,7 +143,7 @@ export function Rps({ onFeel }: { onFeel?: (kind: "win" | "lose") => void }) {
           <>
             你 {RPS_LABEL[last.player as RpsMove]} · 摊 {RPS_LABEL[last.house as RpsMove]} ·{" "}
             <span className="font-display text-accent">{outcomeCopy(last.outcome)}</span>
-            {last.payout > 0 ? <span className="ml-2 font-display font-extrabold">+{last.payout}</span> : null}
+            {last.payout > 0 ? <span className="ml-2 font-display font-extrabold">+{formatAmt(last.payout)}</span> : null}
           </>
         ) : (
           <span className="text-muted">{busy ? "石头剪刀布…" : "先出手，再拍桌子"}</span>

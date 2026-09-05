@@ -9,6 +9,7 @@ import {
   type CoinSide,
   type Round,
   clampBet,
+  formatAmt,
   outcomeCopy,
 } from "@/lib/hall/rules";
 import { Coin3D, CoinThumb } from "./Coin";
@@ -74,7 +75,7 @@ export function CoinFlip({ onFeel }: { onFeel?: (kind: "win" | "lose") => void }
           aria-label={spinning ? "抛起来了" : "投掷硬币"}
         />
         {last && !spinning && last.payout > 0 ? (
-          <p className="float-payout pointer-events-none absolute bottom-0 font-display text-sm text-accent">+{last.payout}</p>
+          <p className="float-payout pointer-events-none absolute bottom-0 font-display text-sm text-accent">+{formatAmt(last.payout)}</p>
         ) : null}
       </div>
 
@@ -100,7 +101,7 @@ export function CoinFlip({ onFeel }: { onFeel?: (kind: "win" | "lose") => void }
             你 {COIN_LABEL[last.player as CoinSide]} · 摊 {COIN_LABEL[last.house as CoinSide]} ·{" "}
             <span className="font-display text-accent">{outcomeCopy(last.outcome)}</span>
             <span className="ml-2 tabular-nums">
-              {last.outcome === "win" ? `+${last.payout}` : `−${last.bet}`}
+              {last.outcome === "win" ? `+${formatAmt(last.payout)}` : `−${formatAmt(last.bet)}`}
             </span>
           </>
         ) : (

@@ -89,19 +89,73 @@ function FlowerMark() {
 function WordMark() {
   return (
     <svg viewBox="0 0 100 100" className="coin-mark">
-      <circle cx="50" cy="50" r="37" fill="none" stroke="currentColor" strokeWidth="2.4" />
-      <circle cx="50" cy="50" r="31" fill="none" stroke="currentColor" strokeWidth="1.2" />
-      <text
-        x="50"
-        y="34"
-        textAnchor="middle"
-        fill="currentColor"
-        fontSize="20"
-        fontFamily='"ZCOOL KuaiLe", Nunito, sans-serif'
+      <circle cx="50" cy="50" r="37.5" fill="none" stroke="currentColor" strokeWidth="2.6" />
+      <circle cx="50" cy="50" r="32.8" fill="none" stroke="currentColor" strokeWidth="1.15" />
+      <circle
+        cx="50"
+        cy="50"
+        r="30.2"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="0.9"
+        strokeDasharray="1.6 2.8"
+        opacity="0.55"
+      />
+
+      <g fill="currentColor" opacity="0.55">
+        <circle cx="19.5" cy="50" r="1.7" />
+        <circle cx="80.5" cy="50" r="1.7" />
+      </g>
+
+      <g transform="translate(50 50)">
+        <rect
+          x="-10"
+          y="-10"
+          width="20"
+          height="20"
+          rx="0.4"
+          fill="currentColor"
+          fillOpacity="0.12"
+          stroke="currentColor"
+          strokeWidth="2.4"
+        />
+        <rect x="-6.8" y="-6.8" width="13.6" height="13.6" rx="0.2" fill="none" stroke="currentColor" strokeWidth="1.15" />
+        <path
+          d="M-10 6.5 V-10 H6.5"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1"
+          opacity="0.28"
+          strokeLinecap="square"
+        />
+      </g>
+
+      <g
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.35"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       >
-        字
-      </text>
-      <rect x="40" y="43" width="20" height="20" rx="1.2" fill="currentColor" fillOpacity="0.88" stroke="currentColor" strokeWidth="2" />
+        <path d="M50 13.5 V19" />
+        <path d="M32 22.5 H68" />
+        <path d="M34.5 22.5 V27.5" />
+        <path d="M65.5 22.5 V27.5" />
+        <path d="M37 30.5 H63" />
+        <path d="M50 30.5 V37.5" />
+        <path d="M39.5 35.5 H60.5" />
+      </g>
+
+      <g
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        opacity="0.8"
+      >
+        <path d="M34 78.5 Q50 85 66 78.5" />
+        <path d="M38 82.2 Q50 87 62 82.2" />
+      </g>
     </svg>
   );
 }
