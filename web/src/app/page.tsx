@@ -1,6 +1,6 @@
 "use client";
 
-import { formatEther } from "viem";
+import { formatEther } from "viem/utils";
 import { useReadContract } from "wagmi";
 import { ConnectBar } from "@/components/ConnectBar";
 import { CoinFlipPanel } from "@/components/CoinFlipPanel";

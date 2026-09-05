@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { formatEther, parseEther } from "viem";
+import { formatEther, parseEther } from "viem/utils";
 import {
   useAccount,
   useReadContract,

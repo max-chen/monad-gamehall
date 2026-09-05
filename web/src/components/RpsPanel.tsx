@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { formatEther, parseEther } from "viem";
+import { formatEther, parseEther } from "viem/utils";
 import { useAccount, useReadContract, useWriteContract } from "wagmi";
 import { GAME_HALL_ADDRESS, PLACE_GAS, SETTLE_GAS } from "@/lib/chain";
 import { gameHallAbi } from "@/lib/gameHallAbi";

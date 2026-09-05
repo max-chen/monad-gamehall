@@ -1,4 +1,4 @@
-import { encodePacked, keccak256, toHex } from "viem";
+import { encodePacked, keccak256, toHex } from "viem/utils";
 
 export const RPS_MOVES = [
   { id: 0, label: "石头", emoji: "✊" },
