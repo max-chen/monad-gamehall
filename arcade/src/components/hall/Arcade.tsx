@@ -45,12 +45,7 @@ export function Arcade() {
   }
 
   return (
-    <main
-      className={cn("mx-auto min-h-screen max-w-5xl px-4 py-8 sm:px-6 sm:py-12", shaking && "hall-shake")}
-      onAnimationEnd={(e) => {
-        if (e.animationName === "hall-shake") setShaking(false);
-      }}
-    >
+    <main className="mx-auto min-h-screen max-w-5xl px-4 py-8 sm:px-6 sm:py-12">
       <header className="mb-8 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="stamp text-xs">课间十分钟</p>
@@ -60,9 +55,14 @@ export function Arcade() {
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <div className="sticker px-4 py-3">
+          <div
+            className={cn("sticker px-4 py-3", shaking && "hall-shake")}
+            onAnimationEnd={(e) => {
+              if (e.animationName === "hall-shake") setShaking(false);
+            }}
+          >
             <p className="text-xs text-muted">弹珠币</p>
-            <p key={chipKey} className="chip-pop font-display text-3xl tabular-nums">
+            <p className={cn("font-display text-3xl tabular-nums", chipKey > 0 && "chip-pop")} key={chipKey}>
               {chips.toFixed(3)}
             </p>
           </div>
@@ -93,7 +93,7 @@ export function Arcade() {
         />
       </section>
 
-      <section className="grid gap-5 md:grid-cols-2">
+      <section className="grid items-start gap-5 md:grid-cols-2">
         <CoinFlip onFeel={onFeel} />
         <Rps onFeel={onFeel} />
       </section>
@@ -130,7 +130,7 @@ function Stat({ label, value }: { label: string; value: ReactNode }) {
   return (
     <div className="sticker px-4 py-4">
       <p className="text-xs text-muted">{label}</p>
-      <p className="mt-1 font-display text-xl">{value}</p>
+      <p className="mt-1 min-h-7 font-display text-xl tabular-nums">{value}</p>
     </div>
   );
 }

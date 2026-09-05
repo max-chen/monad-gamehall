@@ -9,43 +9,49 @@ import {
   playRps,
 } from "./rules";
 
+type Draft = Omit<Round, "id">;
+
 type HallState = {
   chips: number;
   nextId: number;
   rounds: Round[];
-  playCoinFlip: (side: CoinSide, bet: number) => Round | { error: string };
-  playRpsMove: (move: RpsMove, bet: number) => Round | { error: string };
+  rollCoinFlip: (side: CoinSide, bet: number) => Draft | { error: string };
+  rollRpsMove: (move: RpsMove, bet: number) => Draft | { error: string };
+  commitRound: (draft: Draft) => Round | { error: string };
   resetBank: () => void;
 };
 
-function applyRound(state: HallState, draft: Omit<Round, "id">): HallState | { error: string } {
-  const bet = clampBet(draft.bet, state.chips);
-  if (state.chips < bet) return { error: "弹珠不够啦，点右上角再发一把。" };
-  const round: Round = { ...draft, bet, id: state.nextId };
-  const chips = Math.round((state.chips - bet + round.payout) * 1e6) / 1e6;
-  return {
-    ...state,
-    chips,
-    nextId: state.nextId + 1,
-    rounds: [round, ...state.rounds].slice(0, 20),
-  };
+function canBet(chips: number, bet: number): { bet: number } | { error: string } {
+  const next = clampBet(bet, chips);
+  if (chips < next) return { error: "弹珠不够啦，点右上角再发一把。" };
+  return { bet: next };
 }
 
 export const useHall = create<HallState>()((set, get) => ({
   chips: START_CHIPS,
   nextId: 1,
   rounds: [],
-  playCoinFlip: (side, bet) => {
-    const result = applyRound(get(), playCoin(side, bet));
-    if ("error" in result) return result;
-    set(result);
-    return result.rounds[0]!;
+  rollCoinFlip: (side, bet) => {
+    const gate = canBet(get().chips, bet);
+    if ("error" in gate) return gate;
+    return playCoin(side, gate.bet);
   },
-  playRpsMove: (move, bet) => {
-    const result = applyRound(get(), playRps(move, bet));
-    if ("error" in result) return result;
-    set(result);
-    return result.rounds[0]!;
+  rollRpsMove: (move, bet) => {
+    const gate = canBet(get().chips, bet);
+    if ("error" in gate) return gate;
+    return playRps(move, gate.bet);
+  },
+  commitRound: (draft) => {
+    const gate = canBet(get().chips, draft.bet);
+    if ("error" in gate) return gate;
+    const round: Round = { ...draft, bet: gate.bet, id: get().nextId };
+    const chips = Math.round((get().chips - round.bet + round.payout) * 1e6) / 1e6;
+    set({
+      chips,
+      nextId: round.id + 1,
+      rounds: [round, ...get().rounds].slice(0, 20),
+    });
+    return round;
   },
   resetBank: () => set({ chips: START_CHIPS, nextId: 1, rounds: [] }),
 }));

@@ -45,6 +45,9 @@ export function prefersReducedMotion() {
 }
 
 export function waitMs(ms: number) {
-  if (prefersReducedMotion()) return Promise.resolve();
   return new Promise<void>((r) => setTimeout(r, ms));
+}
+
+export function playDelay(fullMs: number) {
+  return waitMs(prefersReducedMotion() ? Math.min(420, fullMs) : fullMs);
 }

@@ -1,7 +1,7 @@
 export const START_CHIPS = 2;
 export const MIN_BET = 0.01;
 export const MAX_BET = 0.5;
-export const WIN_MULT = 1.98;
+export const WIN_MULT = 1.96;
 export const BET_PRESETS = [0.01, 0.05, 0.1, 0.25] as const;
 
 export type CoinSide = 0 | 1;
@@ -24,9 +24,14 @@ export type Round = {
 };
 
 function roll(mod: number): number {
+  const cap = Math.floor(0xffffffff / mod) * mod;
   const buf = new Uint32Array(1);
-  crypto.getRandomValues(buf);
-  return buf[0]! % mod;
+  let n = 0;
+  do {
+    crypto.getRandomValues(buf);
+    n = buf[0]!;
+  } while (n >= cap);
+  return n % mod;
 }
 
 export function winPayout(bet: number): number {
@@ -59,5 +64,5 @@ export function playRps(move: RpsMove, bet: number): Omit<Round, "id"> {
 export function outcomeCopy(outcome: Outcome): string {
   if (outcome === "win") return "赢啦";
   if (outcome === "draw") return "平手，弹珠还给你";
-  return "再来一把";
+  return "没中";
 }
