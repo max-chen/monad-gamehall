@@ -2,7 +2,8 @@ node_modules
 .next
 out
 cache
-broadcast
+broadcast/
+contracts/broadcast/
 .env
 .env.local
 *.log
