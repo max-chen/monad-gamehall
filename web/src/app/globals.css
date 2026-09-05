@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #07070c;
+  --card: #12121c;
+  --line: #2a2a3d;
+  --text: #f4f0ff;
+  --muted: #9b97b0;
+  --accent: #a78bfa;
+  --mint: #c6f25b;
+  --danger: #ff6b8a;
+}
+
+html, body {
+  min-height: 100%;
+  background: radial-gradient(1200px 600px at 10% -10%, #2a1850 0%, transparent 45%),
+              radial-gradient(900px 500px at 100% 0%, #16324a 0%, transparent 40%),
+              var(--bg);
+  color: var(--text);
+}
+
+body {
+  font-family: "Segoe UI", "PingFang SC", "Noto Sans SC", sans-serif;
+}
+
+.hall-card {
+  background: linear-gradient(180deg, #171726 0%, #101018 100%);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+}
+
+.pick {
+  border: 1px solid var(--line);
+  background: #191928;
+  transition: transform .15s ease, border-color .15s ease, background .15s ease;
+}
+.pick:hover { transform: translateY(-2px); border-color: #4b3d7a; }
+.pick.active {
+  border-color: var(--accent);
+  background: #241b3d;
+  box-shadow: 0 0 0 3px rgba(167,139,250,.18);
+}
