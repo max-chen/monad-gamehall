@@ -38,7 +38,7 @@ forge script script/DeployGameHall.s.sol:DeployGameHall \
 ### 已部署（Monad Testnet）
 
 - GameHall：[`0xF2f68B3C960ee48A63cA49264564e076d5d63a70`](https://testnet.monadscan.com/address/0xF2f68B3C960ee48A63cA49264564e076d5d63a70)
-- 部署交易：[`0xa6b13117…` 忽略](https://testnet.monadscan.com/address/0xF2f68B3C960ee48A63cA49264564e076d5d63a70)
+- 部署交易：[`0xf3daf835f8baf72dad6a2d399947069635caa6e72ea23d9a56febc44b6ac749d`](https://testnet.monadscan.com/tx/0xf3daf835f8baf72dad6a2d399947069635caa6e72ea23d9a56febc44b6ac749d)
 - 奖池已注入 `0.4 MON`（可继续打款）
 
 ## 前端
